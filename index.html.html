@@ -529,34 +529,144 @@ footer{padding:24px 72px;border-top:1px solid var(--border3);display:flex;justif
 @keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes pjShimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 
+/* ═══ GLOBAL OVERFLOW SAFETY ══════════════════════════════════ */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+
+/* ═══ HAMBURGER BUTTON ════════════════════════════════════════ */
+.n-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:601;flex-shrink:0}
+.n-hamburger span{display:block;width:22px;height:1.5px;background:var(--fg2);border-radius:2px;transition:transform .3s var(--E1),opacity .3s}
+.n-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.n-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.n-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+
+/* ═══ MOBILE MENU OVERLAY ═════════════════════════════════════ */
+#n-mobile-menu{display:none;position:fixed;inset:0;z-index:550;background:rgba(2,2,13,.97);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .35s var(--E1)}
+#n-mobile-menu.open{opacity:1;pointer-events:all}
+.nm-link{font-family:var(--F1);font-size:2rem;font-weight:700;color:var(--fg2);letter-spacing:-.03em;transition:color .3s}
+.nm-link:hover{color:var(--gold2)}
+.nm-cta{color:var(--gold2)!important;font-size:1.1rem!important;border:1px solid rgba(201,168,76,.3);padding:10px 28px;border-radius:3px;margin-top:8px}
+
 /* ═══ MOBILE ══════════════════════════════════════════════════ */
 @media(max-width:960px){
-  #nav,#nav.pinned{padding:18px 24px}
+  /* Nav */
+  #nav,#nav.pinned{padding:16px 20px}
   .n-links{display:none}
-  #hero,.sec{padding:100px 24px 80px}
-  .container{padding:0 24px}
+  .n-hamburger{display:flex}
+  #n-mobile-menu{display:flex}
+
+  /* Hero – remove sticky, fix height */
+  #hero{
+    position:relative;
+    min-height:100svh;
+    padding:100px 20px 60px;
+    overflow:hidden
+  }
+  /* Disable heavy GPU effects on mobile */
+  #world{display:none}
+  .hero-glow,.hero-glow-2{display:none}
+  body::after{display:none} /* grain */
+
+  /* Name sizing & overflow guard */
+  .h-name{
+    font-size:clamp(3rem,15vw,6rem);
+    word-break:break-word;
+    overflow-wrap:break-word;
+    overflow:visible
+  }
+  .h-bio{max-width:100%}
+  .h-actions{flex-direction:column;align-items:flex-start;gap:10px}
   .h-stat-row,.h-scroll{display:none}
-  .ab-grid,.ex-layout,.edu-layout,.ct-grid,.pj-hd,.think-grid{grid-template-columns:1fr;gap:40px}
-  .pj-card{grid-template-columns:1fr}.pj-side{display:none}
-  .bento{grid-template-columns:1fr 1fr}.bc.wide{grid-column:span 2}
-  .s-ghost{display:none}
-  footer{flex-direction:column;gap:14px;text-align:center;padding:20px 24px}
-  .h-name{font-size:clamp(4rem,18vw,7rem)}
-  .ab-stat-row{grid-template-columns:1fr 1fr}
+
+  /* Quick-nav wrap */
+  .h-quicknav{gap:5px}
+
+  /* Section */
+  .sec{padding:80px 0}
+  .container{padding:0 20px}
+
+  /* All 2-col grids → 1-col */
+  .ab-grid,.ex-layout,.edu-layout,.ct-grid,.pj-hd,.think-grid{
+    grid-template-columns:1fr;gap:32px
+  }
+
+  /* Project cards */
+  .pj-card{grid-template-columns:1fr}
+  .pj-side{display:none}
+  .pj-card-label{right:16px}
+
+  /* Bento */
+  .bento{grid-template-columns:1fr 1fr}
+  .bc.wide{grid-column:span 2}
+
+  /* Skills tabs scrollable */
+  .sk-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+  /* Case-study panel */
+  #cs-panel{width:100vw}
+  .cs-body{padding:24px 20px 60px}
+  .cs-kpi-row{grid-template-columns:1fr 1fr;gap:8px}
+  .cs-constraints{grid-template-columns:1fr}
+
+  /* Arch diagram */
+  .arch-node-box{min-width:120px;font-size:.63rem}
+  .arch-panel{padding:20px}
+
+  /* Trust */
   .trust-grid{grid-template-columns:repeat(4,1fr)}
-  .otw-banner{flex-direction:column;align-items:flex-start}
+  .trust-inner,.trust-inner-row{padding:0 20px}
+  #trust{padding:56px 0}
+
+  /* Contact ghost – hide to prevent overflow */
+  .ct-ghost{display:none}
+
+  /* About stat grid */
+  .ab-stat-row{grid-template-columns:1fr 1fr}
+  .ab-cards-grid{grid-template-columns:1fr 1fr}
+
+  /* OTW banner */
+  .otw-banner{flex-direction:column;align-items:flex-start;padding:16px 18px;gap:14px}
+  .otw-tags{flex-wrap:wrap}
+
+  /* Footer */
+  footer{flex-direction:column;gap:14px;text-align:center;padding:20px 20px}
+
+  /* Ghost text off */
+  .s-ghost{display:none}
+
+  /* Code block */
+  .cb-k{width:90px;font-size:.68rem}
+  .cb-v{font-size:.68rem;word-break:break-all}
+
+  /* Buttons full-readable */
+  .btn{padding:12px 24px;font-size:.8rem}
 }
+
 @media(max-width:600px){
-  .bento{grid-template-columns:1fr}.bc.wide{grid-column:auto}
+  /* Name even tighter */
+  .h-name{font-size:clamp(2.8rem,18vw,5rem)}
+
+  /* All grids → 1 col */
+  .bento{grid-template-columns:1fr}
+  .bc.wide{grid-column:auto}
   .cert-grid,.ab-cards-grid{grid-template-columns:1fr}
   .ab-stat-row{grid-template-columns:1fr}
   .ab-stat-cell{border-right:none;border-bottom:1px solid var(--border2)}
   .h-actions{flex-direction:column;align-items:flex-start}
-  .btn{padding:11px 22px;font-size:.78rem}
   .trust-grid{grid-template-columns:repeat(3,1fr)}
-  #trust{padding:48px 0}
-  .trust-inner{padding:0 24px}
+  .trust-inner,.trust-inner-row{padding:0 16px}
+  .cs-kpi-row{grid-template-columns:1fr}
+  #trust{padding:40px 0}
+  .container{padding:0 16px}
+  #hero{padding:90px 16px 50px}
+  .pj-kpis{flex-wrap:wrap}
+  .pj-kpi{min-width:calc(50% - 1px)}
+  .think-grid{gap:24px}
+  .arch-node-box{min-width:100px;font-size:.6rem;padding:8px 10px}
+  .sk-grid{grid-template-columns:1fr}
+  footer{padding:20px 16px}
 }
+
 /* Touch · kill custom cursor */
 @media(pointer:coarse){
   body{cursor:auto}
@@ -586,6 +696,16 @@ footer{padding:24px 72px;border-top:1px solid var(--border3);display:flex;justif
 <div id="prog"></div>
 <div id="sec-accent"><div id="sec-accent-bar"></div></div>
 
+<!-- MOBILE MENU OVERLAY -->
+<div id="n-mobile-menu">
+  <a href="#about" class="nm-link">About</a>
+  <a href="#exp" class="nm-link">Experience</a>
+  <a href="#projects" class="nm-link">Projects</a>
+  <a href="#thinking" class="nm-link">Methodology</a>
+  <a href="#edu" class="nm-link">Education</a>
+  <a href="#contact" class="nm-link nm-cta">Contact</a>
+</div>
+
 <!-- NAV -->
 <nav id="nav">
   <a href="#hero" class="n-logo"><span class="n-logo-ring"></span>PS</a>
@@ -597,6 +717,9 @@ footer{padding:24px 72px;border-top:1px solid var(--border3);display:flex;justif
     <li><a href="#edu" class="n-a" data-sec="edu">Education</a></li>
     <li><a href="#contact" class="n-a n-cta" data-sec="contact">Contact</a></li>
   </ul>
+  <button class="n-hamburger" id="n-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -961,7 +1084,7 @@ footer{padding:24px 72px;border-top:1px solid var(--border3);display:flex;justif
         </div>
       </div>
       <div class="ct-links">
-        <a href="mailto:prateekshaw36@gmail.com?subject=Portfolio Inquiry" class="ct-link"><div class="ct-ico">✉️</div><div class="ct-txt"><div class="ct-lbl">Email</div><div class="ct-val">prateekshaw36@gmail.com</div></div><span class="ct-arr">→</span></a>
+        <a href="/cdn-cgi/l/email-protection#96e6e4f7e2f3f3fde5fef7e1a5a0d6f1fbf7fffab8f5f9fba9e5e3f4fcf3f5e2abc6f9e4e2f0f9fafff9b6dff8e7e3ffe4ef" class="ct-link"><div class="ct-ico">✉️</div><div class="ct-txt"><div class="ct-lbl">Email</div><div class="ct-val"><span class="__cf_email__" data-cfemail="057577647160606e766d64723633456268646c692b666a68">[email&#160;protected]</span></div></div><span class="ct-arr">→</span></a>
         <a href="https://www.linkedin.com/in/prateekshaw15/" target="_blank" rel="noopener" class="ct-link"><div class="ct-ico">💼</div><div class="ct-txt"><div class="ct-lbl">LinkedIn</div><div class="ct-val">linkedin.com/in/prateekshaw15</div></div><span class="ct-arr">→</span></a>
         <a href="https://github.com/Prateeks1315" target="_blank" rel="noopener" class="ct-link"><div class="ct-ico">🐙</div><div class="ct-txt"><div class="ct-lbl">GitHub</div><div class="ct-val">github.com/Prateeks1315</div></div><span class="ct-arr">→</span></a>
         <a href="tel:+919029968391" class="ct-link"><div class="ct-ico">📞</div><div class="ct-txt"><div class="ct-lbl">Phone</div><div class="ct-val">+91 90299 68391</div></div><span class="ct-arr">→</span></a>
@@ -983,11 +1106,11 @@ footer{padding:24px 72px;border-top:1px solid var(--border3);display:flex;justif
 
 <footer>
   <p class="ft-copy">© 2025 <span>Prateek Shaw</span> | Technical Business Analyst · Mumbai</p>
-  <div class="ft-links"><a href="https://www.linkedin.com/in/prateekshaw15/" target="_blank" rel="noopener" class="ft-a">LinkedIn</a><a href="https://github.com/Prateeks1315" target="_blank" rel="noopener" class="ft-a">GitHub</a><a href="mailto:prateekshaw36@gmail.com?subject=Portfolio Inquiry" class="ft-a">Email</a></div>
+  <div class="ft-links"><a href="https://www.linkedin.com/in/prateekshaw15/" target="_blank" rel="noopener" class="ft-a">LinkedIn</a><a href="https://github.com/Prateeks1315" target="_blank" rel="noopener" class="ft-a">GitHub</a><a href="/cdn-cgi/l/email-protection#e393918297868688908b8294d0d5a3848e828a8fcd808c8edc90968189868097deb38c9197858c8f8a8cc3aa8d92968a919a" class="ft-a">Email</a></div>
 </footer>
 <p style="text-align:center;font-size:11px;color:#3a3a55;padding:8px 0 14px;position:relative;z-index:3;background:rgba(2,2,13,.95)">This website uses privacy-friendly analytics to understand visitor behaviour. No personal data is stored.</p>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ═══════════════════════════════════════════════════════════════
    DATA
 ═══════════════════════════════════════════════════════════════ */
@@ -2079,6 +2202,28 @@ const MARQUEE_ITEMS = ['Technical BA','Payments Expert','SQL','Python','Apache K
   window._psAnalytics = session;
 })();
 
+
+/* ═══════════════════════════════════════════════════════════════
+   HAMBURGER MENU
+═══════════════════════════════════════════════════════════════ */
+(()=>{
+  const btn=document.getElementById("n-hamburger");
+  const menu=document.getElementById("n-mobile-menu");
+  if(!btn||!menu)return;
+  function toggleMenu(){
+    const open=btn.classList.toggle("open");
+    menu.classList.toggle("open",open);
+    document.body.style.overflow=open?"hidden":"";
+  }
+  btn.addEventListener("click",toggleMenu);
+  menu.querySelectorAll("a").forEach(a=>{
+    a.addEventListener("click",()=>{
+      btn.classList.remove("open");
+      menu.classList.remove("open");
+      document.body.style.overflow="";
+    });
+  });
+})();
 /* ═══════════════════════════════════════════════════════════════
    VISITOR DASHBOARD (hidden, open with Shift+Alt+V)
 ═══════════════════════════════════════════════════════════════ */
@@ -2229,12 +2374,3 @@ const MARQUEE_ITEMS = ['Technical BA','Payments Expert','SQL','Python','Apache K
     font-size:.83rem;
     letter-spacing:.05em;
     box-shadow:0 8px 32px rgba(201,168,76,.35);
-    transition:transform .2s,box-shadow .2s;
-  "
-  onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 40px rgba(201,168,76,.5)'"
-  onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 32px rgba(201,168,76,.35)'"
-  onclick="plausible && plausible('Hire Me Click')"
->Hire Me</a>
-
-</body>
-</html>
