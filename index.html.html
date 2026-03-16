@@ -94,6 +94,421 @@
 }
 html{scroll-behavior:auto;overflow-x:hidden}
 body{background:var(--ink);color:var(--fg);font-family:var(--F2);font-weight:400;line-height:1.6;overflow-x:hidden;cursor:auto}
+
+/* ═══════════════════════════════════════════════════════════════
+   PREMIUM LIGHT MODE  ·  White + Electric Blue  ·  Awwwards tier
+═══════════════════════════════════════════════════════════════ */
+html[data-theme="light"]{
+  /* Backgrounds — layered depth */
+  --ink:#f8faff;
+  --deep:#eef2ff;
+  --surface-1:#ffffff;
+  --surface-2:#f4f7ff;
+  --surface-3:#eaefff;
+  --card:#ffffff;
+  --card2:#f0f4ff;
+
+  /* Brand — electric blue system (no gold in light mode) */
+  --gold:#2563eb;
+  --gold2:#3b82f6;
+  --gold3:#60a5fa;
+  --blue:#2563eb;
+  --blue2:#3b82f6;
+
+  /* Semantic */
+  --teal:#0891b2;
+  --purple:#7c3aed;
+  --coral:#e11d48;
+
+  /* Typography — maximum contrast */
+  --fg:#0a0f1e;
+  --fg2:#1e293b;
+  --fg3:#475569;
+
+  /* Borders — blue-tinted glass */
+  --border:rgba(37,99,235,.2);
+  --border2:rgba(37,99,235,.13);
+  --border3:rgba(37,99,235,.07);
+  --border-sub:rgba(37,99,235,.05);
+}
+
+/* ── Body & page shell ─────────────────────────────────────── */
+html[data-theme="light"] body{
+  background:var(--ink);
+}
+
+/* Subtle animated mesh gradient background — premium feel */
+html[data-theme="light"] body::before{
+  content:'';
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 50% at 10% 0%,   rgba(37,99,235,.07)  0%,transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 20%,  rgba(99,102,241,.06) 0%,transparent 55%),
+    radial-gradient(ellipse 50% 60% at 50% 100%, rgba(14,165,233,.05)  0%,transparent 50%);
+}
+
+/* ── Nav ───────────────────────────────────────────────────── */
+html[data-theme="light"] #nav{
+  border-bottom-color:rgba(37,99,235,.08)!important;
+}
+html[data-theme="light"] #nav.pinned{
+  background:rgba(248,250,255,.92)!important;
+  backdrop-filter:blur(24px)!important;
+  -webkit-backdrop-filter:blur(24px)!important;
+  border-bottom-color:rgba(37,99,235,.12)!important;
+  box-shadow:0 1px 40px rgba(37,99,235,.07)!important;
+}
+html[data-theme="light"] .n-logo{color:var(--blue)!important}
+html[data-theme="light"] .n-logo-ring{border-color:rgba(37,99,235,.25)!important}
+html[data-theme="light"] .n-a{color:var(--fg3)!important}
+html[data-theme="light"] .n-a:hover,
+html[data-theme="light"] .n-a.on{color:var(--blue)!important}
+html[data-theme="light"] .n-a::after{background:var(--blue2)!important}
+html[data-theme="light"] .n-cta{
+  border-color:rgba(37,99,235,.3)!important;
+  color:var(--blue)!important;
+}
+html[data-theme="light"] .n-cta:hover{
+  background:var(--blue)!important;
+  color:#fff!important;
+  border-color:var(--blue)!important;
+}
+
+/* ── Hero ──────────────────────────────────────────────────── */
+html[data-theme="light"] #hero{
+  background:transparent!important;
+}
+/* Blue electric glow replaces gold in light mode */
+html[data-theme="light"] .hero-glow{
+  background:radial-gradient(circle,rgba(37,99,235,.12),transparent 70%)!important;
+}
+html[data-theme="light"] .hero-glow-2{
+  background:radial-gradient(circle,rgba(99,102,241,.09),transparent 70%)!important;
+}
+html[data-theme="light"] .h-tag{color:var(--blue)!important}
+html[data-theme="light"] .h-tag-led{background:var(--blue)!important}
+html[data-theme="light"] .h-tag-led::after{border-color:rgba(37,99,235,.3)!important}
+html[data-theme="light"] .h-name-a{color:var(--fg)!important}
+html[data-theme="light"] .h-name-b{
+  -webkit-text-stroke:1.5px rgba(37,99,235,.2)!important;
+}
+html[data-theme="light"] .h-name-b .g-fill{
+  background:linear-gradient(135deg,#2563eb 0%,#6366f1 50%,#3b82f6 100%)!important;
+  -webkit-background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+}
+html[data-theme="light"] .h-rule-line{background:var(--blue)!important;opacity:.3!important}
+html[data-theme="light"] .h-tw{color:var(--blue)!important}
+html[data-theme="light"] .h-blink{background:var(--blue)!important}
+html[data-theme="light"] .h-stat-n{color:var(--blue)!important}
+html[data-theme="light"] .h-scroll-rail{background:linear-gradient(to right,var(--blue),transparent)!important}
+html[data-theme="light"] .h-scroll-txt{color:var(--fg3)!important}
+
+/* ── Sections ──────────────────────────────────────────────── */
+html[data-theme="light"] section{
+  background:rgba(248,250,255,0.96)!important;
+}
+html[data-theme="light"] #thinking{
+  background:rgba(238,242,255,0.98)!important;
+}
+html[data-theme="light"] #trust{
+  background:rgba(240,245,255,.99)!important;
+  border-color:rgba(37,99,235,.08)!important;
+}
+html[data-theme="light"] .s-eyebrow{color:var(--blue)!important}
+html[data-theme="light"] .s-n{color:var(--fg3)!important;opacity:.5!important}
+html[data-theme="light"] .s-title{color:var(--fg)!important}
+html[data-theme="light"] .s-ghost{
+  -webkit-text-stroke:1px rgba(37,99,235,.04)!important;
+}
+
+/* ── Premium Cards — glass + shadow + blue border glow ─────── */
+html[data-theme="light"] .ex-item-inner,
+html[data-theme="light"] .ab-card,
+html[data-theme="light"] .sk-card,
+html[data-theme="light"] .bc,
+html[data-theme="light"] .pj-card,
+html[data-theme="light"] .edu-card,
+html[data-theme="light"] .cert,
+html[data-theme="light"] .trust-chip,
+html[data-theme="light"] .arch-panel,
+html[data-theme="light"] .arch-box,
+html[data-theme="light"] .ct-link,
+html[data-theme="light"] .ab-stat-row,
+html[data-theme="light"] .code-block{
+  background:#ffffff!important;
+  border-color:rgba(37,99,235,.12)!important;
+  box-shadow:0 2px 16px rgba(37,99,235,.06), 0 1px 3px rgba(37,99,235,.04)!important;
+}
+html[data-theme="light"] .ex-item-inner:hover,
+html[data-theme="light"] .ab-card:hover,
+html[data-theme="light"] .sk-card:hover,
+html[data-theme="light"] .bc:hover,
+html[data-theme="light"] .pj-card:hover,
+html[data-theme="light"] .edu-card:hover,
+html[data-theme="light"] .cert:hover,
+html[data-theme="light"] .trust-chip:hover{
+  border-color:rgba(37,99,235,.28)!important;
+  box-shadow:0 8px 40px rgba(37,99,235,.12), 0 2px 8px rgba(37,99,235,.08)!important;
+}
+
+/* Card top accent line — blue instead of gold */
+html[data-theme="light"] .sk-card::before,
+html[data-theme="light"] .bc::before,
+html[data-theme="light"] .bc::after{
+  background:linear-gradient(90deg,transparent,var(--blue2),transparent)!important;
+}
+
+/* ── OTW Banner ────────────────────────────────────────────── */
+html[data-theme="light"] .otw-banner{
+  background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(99,102,241,.04))!important;
+  border-color:rgba(37,99,235,.18)!important;
+  box-shadow:0 4px 24px rgba(37,99,235,.08)!important;
+}
+html[data-theme="light"] .otw-text{color:var(--fg)!important}
+html[data-theme="light"] .otw-led{background:var(--teal)!important;box-shadow:0 0 0 2px rgba(8,145,178,.25)!important}
+html[data-theme="light"] .otw-tag{
+  background:rgba(8,145,178,.07)!important;
+  border-color:rgba(8,145,178,.18)!important;
+  color:var(--teal)!important;
+}
+
+/* ── Marquee ───────────────────────────────────────────────── */
+html[data-theme="light"] .marquee-strip{
+  background:rgba(238,242,255,.98)!important;
+  border-color:rgba(37,99,235,.08)!important;
+}
+html[data-theme="light"] .marquee-item{color:var(--fg3)!important}
+html[data-theme="light"] .marquee-sep{background:var(--blue2)!important;opacity:.4!important}
+
+/* ── Tags & chips ──────────────────────────────────────────── */
+html[data-theme="light"] .tag{
+  background:rgba(37,99,235,.05)!important;
+  border-color:rgba(37,99,235,.14)!important;
+  color:var(--fg3)!important;
+}
+html[data-theme="light"] .tag:hover{
+  background:rgba(37,99,235,.1)!important;
+  border-color:rgba(37,99,235,.25)!important;
+  color:var(--blue)!important;
+}
+html[data-theme="light"] .tg{background:rgba(37,99,235,.08)!important;border-color:rgba(37,99,235,.22)!important;color:var(--blue)!important}
+html[data-theme="light"] .pj-chip,.bkpi,.bchip{
+  background:rgba(37,99,235,.05)!important;
+  border-color:rgba(37,99,235,.12)!important;
+  color:var(--fg3)!important;
+}
+html[data-theme="light"] .trust-nm{color:var(--fg3)!important}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+html[data-theme="light"] .btn-fill{
+  background:var(--blue)!important;
+  color:#fff!important;
+  box-shadow:0 4px 20px rgba(37,99,235,.3)!important;
+}
+html[data-theme="light"] .btn-fill::before{background:var(--blue2)!important}
+html[data-theme="light"] .btn-fill:hover{
+  box-shadow:0 8px 40px rgba(37,99,235,.4)!important;
+}
+html[data-theme="light"] .btn-line{
+  border-color:rgba(37,99,235,.22)!important;
+  color:var(--fg2)!important;
+}
+html[data-theme="light"] .btn-line:hover{
+  border-color:var(--blue)!important;
+  color:var(--blue)!important;
+}
+
+/* ── Quick nav ─────────────────────────────────────────────── */
+html[data-theme="light"] .h-qn-link{
+  border-color:rgba(37,99,235,.14)!important;
+  color:var(--fg3)!important;
+}
+html[data-theme="light"] .h-qn-link:hover{
+  color:var(--blue)!important;
+  border-color:rgba(37,99,235,.3)!important;
+  background:rgba(37,99,235,.05)!important;
+}
+
+/* ── Experience ────────────────────────────────────────────── */
+html[data-theme="light"] .ex-co{color:var(--blue)!important}
+html[data-theme="light"] .ex-period{border-color:rgba(37,99,235,.18)!important;color:var(--fg3)!important}
+html[data-theme="light"] .ex-now{background:rgba(8,145,178,.08)!important;color:var(--teal)!important;border-color:rgba(8,145,178,.2)!important}
+html[data-theme="light"] .ex-arr{color:var(--blue)!important}
+html[data-theme="light"] .ex-num-bg{color:rgba(37,99,235,.04)!important}
+
+/* ── Projects ──────────────────────────────────────────────── */
+html[data-theme="light"] .pj-n{color:rgba(37,99,235,.05)!important}
+html[data-theme="light"] .pt-ba{background:rgba(37,99,235,.08)!important;color:var(--blue)!important;border-color:rgba(37,99,235,.2)!important}
+html[data-theme="light"] .pj-kpis{background:rgba(37,99,235,.03)!important;border-color:rgba(37,99,235,.12)!important}
+html[data-theme="light"] .pj-kpi{border-color:rgba(37,99,235,.1)!important}
+html[data-theme="light"] .pj-kv{color:var(--blue)!important}
+html[data-theme="light"] .pj-side{background:rgba(37,99,235,.03)!important;border-color:rgba(37,99,235,.1)!important}
+html[data-theme="light"] .pj-card-label{
+  background:rgba(37,99,235,.08)!important;
+  border-color:rgba(37,99,235,.22)!important;
+  color:var(--blue)!important;
+}
+
+/* ── About ─────────────────────────────────────────────────── */
+html[data-theme="light"] .ab-big-quote em{color:var(--blue)!important}
+html[data-theme="light"] .ab-sc-n{color:var(--blue)!important}
+html[data-theme="light"] .ab-ico{color:var(--fg)!important}
+
+/* ── Skill tabs ────────────────────────────────────────────── */
+html[data-theme="light"] .sk-tabs{border-color:rgba(37,99,235,.1)!important}
+html[data-theme="light"] .sk-tab{color:var(--fg3)!important}
+html[data-theme="light"] .sk-tab:hover{color:var(--fg2)!important}
+html[data-theme="light"] .sk-tab.on{color:var(--blue)!important;border-bottom-color:var(--blue)!important}
+html[data-theme="light"] .sk-nm{color:var(--fg)!important}
+
+/* ── Education ─────────────────────────────────────────────── */
+html[data-theme="light"] .edu-sch{color:var(--blue)!important}
+html[data-theme="light"] .cert-ico{background:rgba(37,99,235,.08)!important}
+html[data-theme="light"] .cb-v{color:var(--teal)!important}
+
+/* ── Thinking section ──────────────────────────────────────── */
+html[data-theme="light"] .think-step-n{color:rgba(37,99,235,.14)!important}
+html[data-theme="light"] .think-step:hover .think-step-n{color:rgba(37,99,235,.4)!important}
+html[data-theme="light"] .think-step{border-color:rgba(37,99,235,.08)!important}
+html[data-theme="light"] .arch-title{color:var(--blue)!important}
+html[data-theme="light"] .arch-dot,.arch-d-dot{background:var(--blue)!important}
+html[data-theme="light"] .arch-node-box{
+  background:rgba(37,99,235,.07)!important;
+  border-color:rgba(37,99,235,.2)!important;
+}
+html[data-theme="light"] .arch-panel::before,
+html[data-theme="light"] .arch-diagram::after{
+  background:linear-gradient(90deg,transparent,var(--blue),transparent)!important;
+}
+
+/* ── Contact ───────────────────────────────────────────────── */
+html[data-theme="light"] .ct-heading em{color:var(--blue)!important}
+html[data-theme="light"] .ct-ghost{-webkit-text-stroke:1px rgba(37,99,235,.03)!important}
+html[data-theme="light"] .ct-ico{background:rgba(37,99,235,.08)!important}
+html[data-theme="light"] .ct-arr{color:var(--blue)!important}
+html[data-theme="light"] .ct-link::before{
+  background:linear-gradient(90deg,rgba(37,99,235,.05),transparent)!important;
+}
+html[data-theme="light"] .ct-link:hover{
+  border-color:rgba(37,99,235,.25)!important;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+html[data-theme="light"] footer{
+  background:rgba(238,242,255,.98)!important;
+  border-top-color:rgba(37,99,235,.1)!important;
+}
+html[data-theme="light"] .ft-copy span{color:var(--blue)!important}
+html[data-theme="light"] .ft-a:hover{color:var(--blue)!important}
+
+/* ── Case study modal ──────────────────────────────────────── */
+html[data-theme="light"] #cs-overlay{background:rgba(15,23,42,.6)!important}
+html[data-theme="light"] #cs-panel{
+  background:#fff!important;
+  border-color:rgba(37,99,235,.15)!important;
+  box-shadow:-20px 0 80px rgba(37,99,235,.1)!important;
+}
+html[data-theme="light"] .cs-close{background:#fff!important;border-color:rgba(37,99,235,.08)!important}
+html[data-theme="light"] .cs-eyebrow{color:var(--blue)!important}
+html[data-theme="light"] .cs-eyebrow-dot{background:var(--blue)!important}
+html[data-theme="light"] .cs-kpi{
+  background:rgba(37,99,235,.04)!important;
+  border-color:rgba(37,99,235,.14)!important;
+}
+html[data-theme="light"] .cs-kpi::before{
+  background:linear-gradient(90deg,transparent,var(--blue2),transparent)!important;
+}
+html[data-theme="light"] .cs-kv{color:var(--blue)!important}
+html[data-theme="light"] .cs-sh{color:var(--fg3)!important}
+html[data-theme="light"] .cs-arch{background:rgba(37,99,235,.04)!important;border-color:rgba(37,99,235,.12)!important}
+html[data-theme="light"] .cs-arch-arr{color:var(--blue)!important}
+html[data-theme="light"] .cs-constraint{background:rgba(37,99,235,.04)!important;border-color:rgba(37,99,235,.1)!important}
+html[data-theme="light"] .cs-constraint strong{color:var(--blue)!important}
+html[data-theme="light"] .cs-lesson-n{color:var(--blue)!important}
+html[data-theme="light"] .cs-close-btn{border-color:rgba(37,99,235,.15)!important}
+
+/* ── Trust row ─────────────────────────────────────────────── */
+html[data-theme="light"] .trust-row-label{color:var(--fg3)!important}
+html[data-theme="light"] .trust-item-pill{
+  background:#fff!important;
+  border-color:rgba(37,99,235,.12)!important;
+  box-shadow:0 1px 6px rgba(37,99,235,.05)!important;
+}
+html[data-theme="light"] .trust-item-pill:hover{
+  border-color:rgba(37,99,235,.28)!important;
+  color:var(--blue)!important;
+  background:rgba(37,99,235,.04)!important;
+}
+html[data-theme="light"] .trust-divider{background:rgba(37,99,235,.12)!important}
+
+/* ── Scrollbar & selection ─────────────────────────────────── */
+html[data-theme="light"] ::-webkit-scrollbar-thumb{background:var(--blue)!important}
+html[data-theme="light"] ::selection{background:rgba(37,99,235,.15)!important}
+
+/* ── Progress bar ──────────────────────────────────────────── */
+html[data-theme="light"] #prog{
+  background:linear-gradient(90deg,transparent,#2563eb,#6366f1,#3b82f6)!important;
+  height:2px!important;
+}
+
+/* ── Section accent bar ────────────────────────────────────── */
+html[data-theme="light"] #sec-accent-bar{
+  filter:hue-rotate(180deg) saturate(1.5)!important;
+}
+
+/* ── Floating labels ───────────────────────────────────────── */
+html[data-theme="light"] .data-node{color:var(--blue)!important;opacity:0!important}
+html[data-theme="light"] .data-node.active{opacity:.04!important}
+
+/* ── De divider ────────────────────────────────────────────── */
+html[data-theme="light"] .de-ddot{background:var(--blue2)!important;box-shadow:0 0 6px var(--blue2)!important}
+html[data-theme="light"] .de-dlbl{color:var(--fg3)!important}
+
+/* ── Loader ────────────────────────────────────────────────── */
+html[data-theme="light"] #loader{background:#f8faff!important}
+html[data-theme="light"] .ld-word{color:var(--fg)!important}
+html[data-theme="light"] .ld-bar{background:linear-gradient(90deg,var(--blue),var(--blue2))!important}
+html[data-theme="light"] .ld-cover{background:#f8faff!important}
+
+/* ── Grain overlay — lighter in light mode ─────────────────── */
+html[data-theme="light"] body::after{opacity:.015!important}
+
+/* ── Three.js canvas — blue tint in light mode ─────────────── */
+html[data-theme="light"] #world{opacity:.35!important;mix-blend-mode:multiply!important}
+
+/* ═══ THEME TOGGLE BUTTON ════════════════════════════════════ */
+#theme-toggle{
+  width:38px;height:38px;
+  border:1px solid var(--border2);
+  border-radius:3px;
+  background:transparent;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  font-size:1rem;
+  transition:border-color .3s,background .3s,transform .35s var(--E1),box-shadow .3s;
+  flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+}
+#theme-toggle:hover{
+  border-color:var(--border);
+  background:var(--surface-2);
+  transform:scale(1.1);
+  box-shadow:0 4px 20px rgba(201,168,76,.15);
+}
+html[data-theme="light"] #theme-toggle:hover{
+  box-shadow:0 4px 20px rgba(37,99,235,.15);
+}
+.tt-icon{
+  position:absolute;
+  transition:opacity .4s var(--E1),transform .4s var(--E1);
+  line-height:1;
+}
+.tt-sun{opacity:0;transform:rotate(-90deg) scale(.6)}
+.tt-moon{opacity:1;transform:rotate(0deg) scale(1)}
+html[data-theme="light"] .tt-sun{opacity:1;transform:rotate(0deg) scale(1)}
+html[data-theme="light"] .tt-moon{opacity:0;transform:rotate(90deg) scale(.6)}
 ::-webkit-scrollbar{width:2px}
 ::-webkit-scrollbar-thumb{background:var(--gold)}
 ::selection{background:rgba(201,168,76,.2)}
@@ -576,6 +991,10 @@ html,body{overflow-x:hidden}
     <li><a href="#edu" class="n-a" data-sec="edu">Education</a></li>
     <li><a href="#contact" class="n-a n-cta" data-sec="contact">Contact</a></li>
   </ul>
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">
+    <span class="tt-icon tt-moon">🌙</span>
+    <span class="tt-icon tt-sun">☀️</span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -2195,3 +2614,31 @@ const MARQUEE_ITEMS = ['Technical BA','Payments Expert','SQL','Python','Apache K
     font-size:.83rem;
     letter-spacing:.05em;
     box-shadow:0 8px 32px rgba(201,168,76,.35);
+  ">Hire Me 👋</a>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   THEME TOGGLE — Light / Dark
+═══════════════════════════════════════════════════════════════ */
+(()=>{
+  const btn = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  // Load saved preference, default = dark
+  const saved = localStorage.getItem('ps-theme') || 'dark';
+  if(saved === 'light') html.setAttribute('data-theme','light');
+
+  btn.addEventListener('click', ()=>{
+    const isLight = html.getAttribute('data-theme') === 'light';
+    if(isLight){
+      html.removeAttribute('data-theme');
+      localStorage.setItem('ps-theme','dark');
+    } else {
+      html.setAttribute('data-theme','light');
+      localStorage.setItem('ps-theme','light');
+    }
+  });
+})();
+</script>
+</body>
+</html>
