@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- CSP: allow eval for GSAP/Three.js animations -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdnjs.cloudflare.com https://plausible.io https://www.clarity.ms https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://plausible.io https://www.clarity.ms https://ipapi.co https:; worker-src blob:; frame-ancestors 'none';">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' 'unsafe-inline' https: blob:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https: data:; img-src 'self' data: https: blob:; connect-src 'self' https: blob:; default-src 'self' https:;">
 <meta name="viewport" content="width=1280">
 <title>Prateek Shaw | Technical Business Analyst | Payments & Fintech Systems</title>
 <meta name="description" content="Prateek Shaw | Technical Business Analyst specialising in payments, financial systems, and digital transformation. Mumbai, India.">
@@ -1316,7 +1316,6 @@ const MARQUEE_ITEMS = ['Technical BA','Payments Expert','SQL','Python','Apache K
 ═══════════════════════════════════════════════════════════════ */
 (()=>{
   if(!window.THREE) return;
-  if(innerWidth < 768) return;
 
   // ── Setup ──────────────────────────────────────────────────
   var canvas = document.getElementById('world');
@@ -1530,7 +1529,6 @@ const MARQUEE_ITEMS = ['Technical BA','Payments Expert','SQL','Python','Apache K
    FLOATING FINTECH DATA STREAM LABELS · 3-LAYER PARALLAX DEPTH
 ═══════════════════════════════════════════════════════════════ */
 (()=>{
-  if(innerWidth < 768) return;
   const TERMS=['UTR','UPI','NEFT','RTGS','Ledger','API','Gateway','Settlement','Credit','Kafka',
                'SLA','BRD','FRD','Webhook','Auth','Recon','SFTP','Dunning','O2C','SQL','AWS',
                'DSO','NACH','Agile','UAT','SIT','JSON','REST','ISO20022','PCI DSS','Tokenization',
@@ -1912,22 +1910,10 @@ const MARQUEE_ITEMS = ['Technical BA','Payments Expert','SQL','Python','Apache K
 })();
 
 /* ═══════════════════════════════════════════════════════════════
-   MOBILE PERFORMANCE GUARD
-   Disable heavy GPU features on small/low-power devices
+   REDUCED MOTION RESPECT ONLY
 ═══════════════════════════════════════════════════════════════ */
 (()=>{
-  const mobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
-  if (mobile) {
-    // Kill canvas world on mobile · too heavy
-    const w = document.getElementById('world');
-    if (w) w.style.display = 'none';
-    // Simplify marquee
-    const mt = document.querySelector('.marquee-track');
-    if (mt) mt.style.animationDuration = '40s';
-    // Reduce GSAP on mobile
-    if (window.gsap) gsap.globalTimeline.timeScale(1.6);
-  }
-  // Respect prefers-reduced-motion
+  // Only respect prefers-reduced-motion — never block on device type
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     if (window.gsap) gsap.globalTimeline.pause();
     document.querySelectorAll('.marquee-track').forEach(el => el.style.animation = 'none');
